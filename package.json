@@ -10,10 +10,10 @@
   "types": "dist/types.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/padcom/node-mavlink-gen"
+    "url": "https://github.com/padcom/mavlink-mappings-gen"
   },
   "bugs": {
-    "url": "https://github.com/padcom/node-mavlink-gen/issues"
+    "url": "https://github.com/padcom/mavlink-mappings-gen/issues"
   },
   "funding": {
     "type": "patreon",
