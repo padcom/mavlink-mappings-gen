@@ -7,7 +7,6 @@
   "keywords": [
     "mavlink"
   ],
-  "types": "dist/types.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/padcom/mavlink-mappings-gen"
@@ -19,11 +18,14 @@
     "type": "patreon",
     "url": "https://www.patreon.com/padcom"
   },
+  "main": "dist/cli.js",
+  "types": "dist/types.d.ts",
   "bin": {
-    "mavlink-mappings-gen": "./cli.ts"
+    "mavlink-mappings-gen": "npx ts-node cli.ts"
   },
   "scripts": {
-    "build": "tsc --project tsconfig.json"
+    "build": "tsc --project tsconfig.json",
+    "prepublishOnly": "npm install && npm run build"
   },
   "dependencies": {
     "minimist": "^1.2.8",
