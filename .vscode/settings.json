@@ -2,6 +2,10 @@
   "editor.codeActionsOnSave": {},
   "editor.formatOnSave": false,
   "cSpell.words": [
-    "mavlink"
+    "datasource",
+    "mavlink",
+    "msgid",
+    "Pipeable",
+    "polycrc"
   ]
 }

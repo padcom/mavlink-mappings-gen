@@ -12,7 +12,7 @@ $ npx node-mavlink-gen@latest minimal.xml
 
 (You can get the `minimal.xml` file from [here](https://raw.githubusercontent.com/mavlink/mavlink/master/message_definitions/v1.0/minimal.xml))
 
-After you run the command the generator will read all the files you specified in the command line and generate source code for each module.
+After you run the command the generator will read all the files you specified in the command line and generate source code for each module. If you have specified multiple files those will instead be written to their respective files.
 
 ### Getting a colored output
 

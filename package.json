@@ -29,12 +29,20 @@
   },
   "dependencies": {
     "minimist": "^1.2.8",
-    "node-mavlink": "^2.0.3",
     "ts-node": "^10.9.1",
-    "typescript": "^5.0.2",
+    "typescript": "^5.0.2"
+  },
+  "peerDependencies": {
     "xml2js": "^0.4.23"
   },
+  "peerDependenciesMeta": {
+    "xml2js": {
+      "optional": true
+    }
+  },
   "devDependencies": {
-    "@types/minimist": "^1.2.2"
+    "@types/minimist": "^1.2.2",
+    "@types/node": "^18.15.10",
+    "@types/xml2js": "^0.4.8"
   }
 }

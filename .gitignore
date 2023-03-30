@@ -1,4 +1,9 @@
+cli.js
 dist
 node_modules
 minimal.xml
-cli.js
+common.xml
+common.ts
+minimal.ts
+minimal.imports.ts
+magic-numbers.ts
