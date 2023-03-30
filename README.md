@@ -7,7 +7,7 @@ A powerful source code generator for [node-mavlink](https://www.npmjs.com/packag
 It's really easy to get going!
 
 ```
-$ npx node-mavlink-gen minimal.xml
+$ npx node-mavlink-gen@latest minimal.xml
 ```
 
 (You can get the `minimal.xml` file from [here](https://raw.githubusercontent.com/mavlink/mavlink/master/message_definitions/v1.0/minimal.xml))
