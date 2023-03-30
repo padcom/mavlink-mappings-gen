@@ -1,6 +1,6 @@
 {
     "name": "mavlink-mappings-gen",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "author": "Matthias Hryniszak <padcom@gmail.com>",
     "license": "MIT",
     "description": "Command-line utility to generate node-mavlink compatible message definitions from official XML definitions",
@@ -21,7 +21,7 @@
     "main": "dist/cli.js",
     "types": "dist/types.d.ts",
     "bin": {
-        "mavlink-mappings-gen": "npx ts-node cli.ts"
+        "mavlink-mappings-gen": "dist/cli.js"
     },
     "scripts": {
         "build": "tsc --project tsconfig.json",
