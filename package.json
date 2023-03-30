@@ -18,8 +18,8 @@
     "type": "patreon",
     "url": "https://www.patreon.com/padcom"
   },
-  "main": "dist/cli.js",
-  "types": "dist/types.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "bin": {
     "mavlink-mappings-gen": "dist/cli.js"
   },

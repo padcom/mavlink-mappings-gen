@@ -1,0 +1,6 @@
+dist/cli.d.ts
+tests
+cli.ts
+/generator
+.vscode
+*.tar.gz

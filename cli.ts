@@ -56,7 +56,7 @@ function getMagicNumbersFileName(filename: string) {
   return dirname(filename) + '/magic-numbers.ts'
 }
 
-async function generate(filename: string, moduleName: string) {
+async function generateFile(filename: string, moduleName: string) {
   print(`Generating ${filename}...`)
 
   const lines: string[] = []
@@ -85,7 +85,7 @@ async function generateFiles(filenames: string[], write: boolean, magic: boolean
 
   for (const filename of filenames) {
     const moduleName = getModuleName(filename)
-    const { code, messages } = await generate(filename, moduleName)
+    const { code, messages } = await generateFile(filename, moduleName)
     updateMagicNumbersWithNewMessages(messages)
 
     if (write) {
