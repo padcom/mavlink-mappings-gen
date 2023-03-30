@@ -1,6 +1,6 @@
 {
   "name": "mavlink-mappings-gen",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "Matthias Hryniszak <padcom@gmail.com>",
   "license": "MIT",
   "description": "Command-line utility to generate node-mavlink compatible message definitions from official XML definitions",
