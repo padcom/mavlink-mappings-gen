@@ -21,7 +21,7 @@
   "main": "dist/cli.js",
   "types": "dist/types.d.ts",
   "bin": {
-    "mavlink-mappings-gen": "npx ts-node cli.ts"
+    "mavlink-mappings-gen": "dist/cli.js"
   },
   "scripts": {
     "build": "tsc --project tsconfig.json",
