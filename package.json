@@ -25,6 +25,7 @@
   },
   "scripts": {
     "build": "tsc --project tsconfig.json",
+    "build:watch": "tsc --project tsconfig.json --watch",
     "prepublishOnly": "npm install && npm run build"
   },
   "dependencies": {
