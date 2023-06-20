@@ -303,16 +303,24 @@ export function generateMessageConstructor(output: Writer, fields: {
   type: string
   source: {
     name: string
+    enum?: string
   }
 }[]) {
   output.write(`  constructor() {`)
   output.write(`    super()`)
   fields.forEach(field => {
-    const initValue = field.type.startsWith('char') || field.type === 'string'
+    const isStringType = (f: typeof field) => f.type.startsWith('char') || f.type === 'string'
+    const is64BitField = (f: typeof field) => f.type.includes('64')
+    const isEnum = (f: typeof field) => f.source.enum
+
+    const initValue = isStringType(field)
       ? '\'\''
-      : field.type.includes('64')
+      : is64BitField(field)
         ? 'BigInt(0)'
-        : 0
+        : isEnum(field)
+          ? `${field.type}[Object.keys(${field.type})[0]]` // this assumes there is at least one value in the enum
+          : 0
+
     const init = field.arrayLength && field.type !== 'string' ? `[]` : initValue
 
     output.write(`    this.${field.name} = ${init}`)
