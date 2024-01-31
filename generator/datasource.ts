@@ -12,6 +12,7 @@ import {
   nameToClassName,
   makeEnumFieldType
 } from './code-utils'
+
 import { calculateCrcExtra } from './utils'
 
 import { Pipeable, pipeable } from './pipeable'
