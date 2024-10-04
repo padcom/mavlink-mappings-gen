@@ -96,9 +96,9 @@ export interface MessageDef {
 }
 
 export interface Input {
-  readonly enumDefs: EnumDef[] & Pipeable<EnumDef[]>
+  readonly enumDefs?: EnumDef[] & Pipeable<EnumDef[]>
   readonly messageDefs: MessageDef[] & Pipeable<MessageDef[]>
-  readonly commandTypeDefs: CommandTypeDef[] & Pipeable<CommandTypeDef[]>
+  readonly commandTypeDefs?: CommandTypeDef[] & Pipeable<CommandTypeDef[]>
 }
 
 export class XmlDataSource {
@@ -117,7 +117,10 @@ export class XmlDataSource {
     return { enumDefs, messageDefs, commandTypeDefs }
   }
 
-  private readEnumDefs(mavlink: any): EnumDef[] & Pipeable<EnumDef[]> {
+  private readEnumDefs(mavlink: any): EnumDef[] & Pipeable<EnumDef[]> | undefined {
+    // If enums are empty, the parameter below becomes undefined and throws an error, so we check for that
+    if(mavlink.enums[0].enum === undefined) return undefined;
+
     // read raw values from the source XML definition
     const result = mavlink.enums[0].enum.map((xml: any) => ({
       name: makeClassName(xml.$.name),
@@ -270,7 +273,10 @@ export class XmlDataSource {
     return result
   }
 
-  private readCommandDefs(enums: EnumDef[]) {
+  private readCommandDefs(enums?: EnumDef[]) {
+    // Since commands are inside of enums, no enums means no commands
+    if(enums === undefined) return undefined;
+
     const result = (enums.find(e => e.name === 'MavCmd')?.values || [])
       .map(command => ({
         ...command,

@@ -671,7 +671,10 @@ export function generateMagicNumbers(magicNumbers: Record<string, number>) {
   ].join('\n') + '\n'
 }
 
-function processEnums(output: Writer, enumDefs: EnumDef[] & Pipeable<EnumDef[]>) {
+function processEnums(output: Writer, enumDefs?: EnumDef[] & Pipeable<EnumDef[]>) {
+  // This prevents failure for the xml files without enums
+  if(enumDefs === undefined) return undefined;
+
   const enums = enumDefs
     // update descriptions to be multiline strings with a maximum width
     .pipe(enums => enums.map(entry => ({
@@ -718,7 +721,10 @@ function processMessages(output: Writer, messageDefs: MessageDef[] & Pipeable<Me
   return messages
 }
 
-function processCommands(output: Writer, moduleName: string, commandTypeDefs: CommandTypeDef[] & Pipeable<CommandTypeDef[]>) {
+function processCommands(output: Writer, moduleName: string, commandTypeDefs?: CommandTypeDef[] & Pipeable<CommandTypeDef[]>) {
+  // This prevents failure for the xml files without commands
+  if(commandTypeDefs === undefined) return undefined;
+
   const commands = commandTypeDefs
     .pipe(commands => commands.map(command => ({
       ...command,
@@ -738,10 +744,14 @@ function processCommands(output: Writer, moduleName: string, commandTypeDefs: Co
 
 export function processRegistries(output: Writer,
   messages: { id: string, name: string }[],
-  commands: { name: string, field: string }[],
+  commands?: { name: string, field: string }[],
 ) {
   generateMessageRegistry(output, messages)
-  generateCommandRegistry(output, commands)
+
+  // If there are no commands, do not generate registry
+  if(commands !== undefined) {
+    generateCommandRegistry(output, commands)
+  }
 }
 
 export async function generateAll(input: string, output: Writer, moduleName: string = '') {
